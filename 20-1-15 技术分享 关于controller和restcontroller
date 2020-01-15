@@ -1,0 +1,11 @@
+昨天成功在浏览器看到了我想要的结果（输出了所有的author序列）但是碰到了一个问题，就是我将原本将@Controller注解在Application上时，return一个list的方法始终报错。
+之后将报错信息复制进百度搜索，说是将controller改为restcontroller就可以了。
+当时比较累，就没想那么多，直接把controller改成了后者。
+然后今天想利用thymeleaf注入model加载到html的时候，发现我return一个字符串（例如index，本意是想返回index.html）后来浏览器就给我显示了index这几个字。
+后来想了想，对比我之前实战thymeleaf时候的代码，发现了controller注解的不同，
+感谢https://blog.csdn.net/zfy2013400244/article/details/80393113的作者提供的想法，让我一目了然controller和restcontroller的区别。
+也许原作者的描述有一些问题，我做一下更加简单的阐述。
+Restcontroller使用时，浏览器直接返回你return的东西
+而使用controller时，浏览器返回的是return的字符串再加上“html”或者“jsp”的页面。
+如过restcontroller和controller不能拆开使用时，而且我想要返回页面时，就使用“return new ModelAndView(“index”)”即可。
+这也解释了为什么我使用@controller时，尝试让浏览器只显示一个字符串“test”屡次失败，出现404错误的原因。
