@@ -1,0 +1,22 @@
+首先尝试了利用dokcer for windowsX64进行虚拟机的安装
+但是安装docker后并打开的过程中，输入网上找到的密码——tcuser并不奏效，没有通过docker stater进入linux的docker管理界面（虽然可以直接从虚拟机启动，但比较麻烦）
+后来还是打算采用直接在windows中安装oracle的方法
+先进入oracle官网，下载文件（此处本人科学上网，网速还算可以）
+将文件解压到同一文件夹下，进行安装
+在cmd通过sqlplus命令打开数据库
+
+通过Database Configuration Assistant 新建了一个数据库（也许还有其他利用命令行直接新建的方案）
+打开数据库后的几项操作记录
+1.select name from v$database（检查当前数据库）
+2.sqlplus /@${数据库名}  as sysdba  (更改当前数据库)
+当前进度 完成了测试用数据库的创建，内容如下：
+表 author
+Id name      project（此项字段待定）
+11 sato_hinata starlight
+12 mimorin_suzuko starlight
+13 koyama_momoyo starlight
+表 tweet
+Id    content                 authorid
+1001  这条是佐藤日向的推特   11
+……略
+下一步，将数据库与springboot建立关联
