@@ -1,0 +1,15 @@
+关于在使用OracleVirtualBox进行虚拟机安装时遇到Unable to Load R3 Model的问题的解决全过程
+
+1.经过百度查找，可以找到原因是 C:\WINDOWS\system32\uxtheme.dll文件被破解，需要重新下一个进行替换
+2.然而在替换过程中出现了问题，显示此文件正在被程序占用，不能替换
+3.解决方案如下：
+（1）以win7为例，先下载好预备用于替换的文件，记住其路径
+（2）重启电脑，长按f8进入安全模式启动电脑
+（3）启动任务管理器，杀死“explore.exe”进程，并关闭任务管理器
+（4）此时已经没有了图形界面，用win+R打开cmd，然后执行如下命令（以预备替换文件位于E:\uxtheme\uxtheme.dll为例）
+（5）->e：
+     ->cd uxtheme
+     ->copy uxtheme.dll C:\WINDOWS\system32\uxtheme.dll
+     ->yes
+（6）显示替换完成即可重启电脑（在cmd中执行shutdown –r）
+4.再度启动virtualBox，即可完成虚拟机的正常启动
