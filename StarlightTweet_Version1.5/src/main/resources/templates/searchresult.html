@@ -14,7 +14,7 @@
 			<div class="panel-body">
 				<ul class="list-group">
 					<li class="list-group-item" th:each="tweet:${tweets}">
-						<img th:src="${tweet.author.icon}">
+						<img th:src="${'/icons/'+tweet.author.name+'.jpg'}">
 						<span th:text="${tweet.author.name}"></span>
 						<span th:text="${tweet.content}"></span>
 					</li>
